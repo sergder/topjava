@@ -6,26 +6,27 @@ import ru.javawebinar.topjava.model.MealTo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.Month;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MealsUtil {
-    public static void main(String[] args) {
-        List<Meal> meals = Arrays.asList(
-                new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500),
-                new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 13, 0), "Обед", 1000),
-                new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 20, 0), "Ужин", 500),
-                new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 0, 0), "Еда на граничное значение", 100),
-                new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 10, 0), "Завтрак", 1000),
-                new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 13, 0), "Обед", 500),
-                new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 20, 0), "Ужин", 410)
-        );
+    public static List<Meal> meals = new ArrayList<>();
 
-        List<MealTo> mealsTo = filteredByStreams(meals, LocalTime.of(7, 0), LocalTime.of(12, 0), 2000);
-        mealsTo.forEach(System.out::println);
+    static {
+        meals.add(new Meal(LocalDateTime.of(2020,6,1,7,30),"Breakfast",500));
+        meals.add(new Meal(LocalDateTime.of(2020,6,1,12,30),"Lunch",1000));
+        meals.add(new Meal(LocalDateTime.of(2020,6,1,18,30),"Supper",500));
+        meals.add(new Meal(LocalDateTime.of(2020,6,2,7,30),"Breakfast",520));
+        meals.add(new Meal(LocalDateTime.of(2020,6,2,12,30),"Lunch",1000));
+        meals.add(new Meal(LocalDateTime.of(2020,6,2,18,30),"Supper",510));
+        meals.add(new Meal(LocalDateTime.of(2020,6,3,7,30),"Breakfast",440));
+        meals.add(new Meal(LocalDateTime.of(2020,6,3,12,30),"Lunch",1200));
+        meals.add(new Meal(LocalDateTime.of(2020,6,3,18,30),"Supper",600));
+        meals.add(new Meal(LocalDateTime.of(2020,6,4,7,30),"Breakfast",480));
+        meals.add(new Meal(LocalDateTime.of(2020,6,4,12,30),"Lunch",1100));
+        meals.add(new Meal(LocalDateTime.of(2020,6,4,18,30),"Supper",330));
     }
 
     public static List<MealTo> filteredByStreams(List<Meal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
